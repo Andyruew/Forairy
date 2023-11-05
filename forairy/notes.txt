@@ -1,0 +1,15 @@
+
+
+Steps
+
+1 - Register page
+2 - Login page
+https://ordinarycoders.com/blog/article/django-user-register-login-logout
+
+3 - Make posts
+https://reintech.io/blog/django-forum-tutorial-build-a-forum-in-django-step-by-step-guide-for-software-developers
+
+4 - make comment section
+
+5 - add api
+https://www.astrologyapi.com/ horoscope API
