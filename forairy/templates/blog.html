@@ -1,0 +1,59 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Forairy</title>
+    <link rel="stylesheet" href="{% static 'forairy_app/css/blog.css' %}">
+    <link rel="stylesheet" href="{% static 'forairy_app/css/styles.css' %}">
+</head>
+<body>
+    <h1>Forairy Stories</h1>
+
+    <!-- Search Bar -->
+    <form method="get" action="{% url 'search-results' %}">
+        <label for="search">Search:</label>
+        <input type="text" id="search" name="q" placeholder="Search...">
+        <button type="submit">Go</button>
+    </form>
+
+    <!-- Add a wrapper div for the carousel -->
+    <div class="blog-container">
+        <div class="post-carousel">
+            <!-- Diary posts -->
+            {% for post in posts %}
+                <div class="post-card">
+                    <h2>{{ post.title }}</h2>
+                    <p>{{ post.author }}</p>
+                    <p>{{ post.date_posted }}</p>
+                    <p>{{ post.content }}</p>
+
+                    <h3>Comments:</h3>
+                    <ul class="comment-container">
+                        {% for comment in post.comments.all %}
+                            <li>
+                                <strong>{{ comment.author }}:</strong> {{ comment.content }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+
+                    <!-- Comment Form -->
+                    <form method="post" action="{% url 'create-comment' post.id %}">
+                        {% csrf_token %}
+                        <label>
+                            <input type="text" name="content" placeholder="Leave a comment">
+                        </label>
+                        <button type="submit">Add Comment</button>
+                    </form>
+                </div>
+            {% empty %} <!-- IF WE CANNOT FIND ANY Diary entries-->
+                <p>No diaries yet.</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- sending our user to make a diary post -->
+    <a href="{% url 'post-create' %}" class="create_btn">Create a New Diary Entry</a>
+</body>
+</html>

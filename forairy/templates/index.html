@@ -1,0 +1,19 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'forairy_app/css/styles.css' %}">
+    <meta charset="UTF-8">
+    <title>Forairy</title>
+</head>
+<body>
+    <p>Login</p>
+
+    <a href="{% url 'login' %}">Login</a>
+
+    <a href="{% url 'register' %}">Register</a>
+
+    <script src="{% static 'forairy_app/src/App.js' %}"></script>
+</body>
+</html>
