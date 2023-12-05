@@ -3,6 +3,9 @@ Final Project for WEB APPLICATION
 
 To use project
 
+You will need to edit configurations and add a venv file 
+then use pip install Django
+
 Run Code
 
 Create register an account
